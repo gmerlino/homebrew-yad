@@ -1,8 +1,8 @@
 class Yad < Formula
   desc "Yet Another Dialog, a fork of Zenity: GTK+ dialog boxes for the command-line"
   homepage "https://sourceforge.net/projects/yad-dialog/"
-  url "https://downloads.sourceforge.net/project/yad-dialog/yad-0.35.0.tar.xz"
-  sha256 "cd98bdbd888e6e3b7d91bd6ddd2f6c3a61c4b0a64b2f96081c63893468e43ba0"
+  url "https://downloads.sourceforge.net/project/yad-dialog/yad-0.38.2.tar.xz"
+  sha256 "91299cba8836b4e510c4527a081d0ad519ad0c6d9f96b3f7f5409acfb66fd5fa"
 
   head do
     url "http://svn.code.sf.net/p/yad-dialog/code/trunk"
@@ -17,7 +17,7 @@ class Yad < Formula
   depends_on "gtk+3"
 
   # to be submitted upstream, just a way to disable X11 dependency
-  patch :DATA
+  patch :p2, :DATA
 
   def install
     if build.head?
