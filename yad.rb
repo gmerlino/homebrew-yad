@@ -1,6 +1,6 @@
 class Yad < Formula
   desc "Yet Another Dialog, a fork of Zenity: GTK+ dialog boxes for the command-line"
-  homepage "https://sourceforge.net/projects/yad-dialog/"
+  homepage "https://github.com/v1cont/yad.git"
   url "https://github.com/v1cont/yad/archive/v0.40.3.tar.gz"
   sha256 "a63a88ea1946a6ba5d45921abed6b53558215ca4b93b4cd7205de00e9a4848bb"
 
