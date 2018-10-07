@@ -22,10 +22,11 @@ class Yad < Formula
 
   def install
     ENV.prepend_path "PKG_CONFIG_PATH", "/opt/X11/lib/pkgconfig"
-    system "gettextize"
+    gettextize = "#{Formula["gettext"].bin}/gettextize"
+    system "script", "-q", "/dev/null", "#{gettextize}"
     inreplace "configure.ac", "AC_CONFIG_FILES([ po/Makefile.in", "AC_CONFIG_FILES(["
     inreplace "configure.ac", "IT_PROG_INTLTOOL([0.40.0])", ""
-    system "autoreconf -ivf"
+    system "autoreconf", "-ivf"
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}",
