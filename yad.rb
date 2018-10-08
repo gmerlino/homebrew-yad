@@ -1,5 +1,5 @@
 class Yad < Formula
-  desc "Yet Another Dialog, a fork of Zenity: GTK+ dialog boxes for the command-line"
+  desc "Yet Another Dialog, a fork of Zenity: GTK+ dialog boxes for the CLI"
   homepage "https://github.com/v1cont/yad.git"
   url "https://github.com/v1cont/yad/archive/v0.40.3.tar.gz"
   sha256 "a63a88ea1946a6ba5d45921abed6b53558215ca4b93b4cd7205de00e9a4848bb"
@@ -8,13 +8,13 @@ class Yad < Formula
     url "https://github.com/v1cont/yad.git"
   end
 
-  depends_on "pkg-config" => :build
   depends_on "autoconf" => :build
   depends_on "automake" => :build
-  depends_on "libtool" => :build
   depends_on "gettext" => :build
   depends_on "intltool" => :build
   depends_on "itstool" => :build
+  depends_on "libtool" => :build
+  depends_on "pkg-config" => :build
   depends_on "gtk+3"
 
   # to be submitted upstream, just a way to disable X11 dependency
@@ -23,7 +23,7 @@ class Yad < Formula
   def install
     ENV.prepend_path "PKG_CONFIG_PATH", "/opt/X11/lib/pkgconfig"
     gettextize = "#{Formula["gettext"].bin}/gettextize"
-    system "script", "-q", "/dev/null", "#{gettextize}"
+    system "script", "-q", "/dev/null", gettextize.to_s
     inreplace "configure.ac", "AC_CONFIG_FILES([ po/Makefile.in", "AC_CONFIG_FILES(["
     inreplace "configure.ac", "IT_PROG_INTLTOOL([0.40.0])", ""
     system "autoreconf", "-ivf"
